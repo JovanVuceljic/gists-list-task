@@ -1,0 +1,38 @@
+.App {
+  padding-bottom: 50px;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid grey;
+  cursor: pointer;
+  user-select: none;
+}
+
+.row:hover {
+  opacity: 0.9;
+}
+
+.row:active span {
+  color: grey;
+}
+
+.row:active img {
+  filter: brightness(50%);
+}
+
+.row img {
+  max-height: 100px;
+  margin: 20px;
+}
+
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  margin: auto;
+  font-size: 18px;
+}
+

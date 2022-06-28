@@ -5,7 +5,7 @@
 .row {
   display: flex;
   align-items: center;
-  border-bottom: 1px solid grey;
+  border-bottom: 1px solid var(--gray);
   cursor: pointer;
   user-select: none;
 }
@@ -15,7 +15,8 @@
 }
 
 .row:active span {
-  color: grey;
+  color: var(--gray);
+  ;
 }
 
 .row:active img {
@@ -36,3 +37,42 @@
   font-size: 18px;
 }
 
+/* Pagination */
+
+.pagination-wrap {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  background-color: var(--white);
+}
+
+.pagination {
+  padding: 10px 25px;
+}
+
+.pagination button {
+  border: none;
+  background: transparent;
+}
+
+.pagination button:not(.active) {
+  color: var(--blue);
+  cursor: pointer;
+}
+
+.pagination button.btn {
+  border: 1px solid var(--border-gray);
+  color: var(--black);
+  border-radius: 5px;
+  padding: 4px 7px;
+  margin: 0 2px;
+  font-size: 10px;
+}
+
+.pagination span {
+  user-select: none;
+  margin: 0 5px;
+  color: var(--blue);
+}

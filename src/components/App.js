@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import '../App.css';
 import GistItem from './GistItem';
@@ -8,6 +8,7 @@ const App = () => {
 
   let perPage = 30
   let since = new Date(2022).toISOString()
+  const appRef = useRef(null)
 
   const [gists, setGists] = useState([])
   const [page, setPage] = useState(1)
@@ -20,13 +21,19 @@ const App = () => {
         .then(result => result.json())
         .then(result => setGists(result))
         .catch(error => console.error("Error fetching the data", error))
-        .finally(() => setLoading(false))
+        .finally(() => {
+          setLoading(false)
+          appRef.current.scrollTo(0, 0)
+        })
     }
     fetchGists()
   }, [page, perPage, since])
 
   return (
-    <div className="App">
+    <div className="App" ref={appRef}>
+      <header>
+        Gists
+      </header>
       {isLoading ? <div className='centered-text loading'>Loading...</div> : (
         <div className="gist-list">
           {gists && gists.length > 0 && gists.map((gist, i) => <GistItem key={i} owner={gist.owner} files={gist.files} />)}
